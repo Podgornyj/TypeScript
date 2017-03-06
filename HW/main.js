@@ -1,17 +1,67 @@
-var menuList = [
-    { title: 'JavaScript', items: ['React', 'Angular2', 'Cycle.js'] },
-    { title: 'Dart', items: ['Flutter', 'Angular2', 'Polymer'] },
+var menuList = [{
+        title: 'Животные',
+        items: [{
+                title: 'Млекопитающие',
+                items: [{
+                        title: 'Коровы'
+                    },
+                    {
+                        title: 'Ослы'
+                    },
+                    {
+                        title: 'Собаки'
+                    },
+                    {
+                        title: 'Тигры'
+                    }
+                ]
+            },
+            {
+                title: 'Другие',
+                items: [{
+                        title: 'Змеи'
+                    },
+                    {
+                        title: 'Птицы'
+                    },
+                    {
+                        title: 'Ящерицы'
+                    },
+                ]
+            },
+        ]
+    },
+    {
+        title: 'Рыбы',
+        items: [{
+                title: 'Аквариумные',
+                items: [{
+                        title: 'Гуппи'
+                    },
+                    {
+                        title: 'Скалярии'
+                    }
+                ]
+            },
+            {
+                title: 'Форель',
+                items: [{
+                        title: 'Морская форель'
+                    }]
+            },
+        ]
+    }
 ];
 function generateMenu(list) {
     var content = "<ul>";
     for (var _i = 0; _i < list.length; _i++) {
-        var a = list[_i];
-        content += "<li><a class='title'>" + a.title + "</a><ul>";
-        for (var _a = 0, _b = a.items; _a < _b.length; _a++) {
-            var item = _b[_a];
-            content += "<li><a>" + item + "</a></li>";
+        var i = list[_i];
+        if (i.items) {
+            content += "<li><a class='title'>" + i.title + "</a>" + generateMenu(i.items) + "</li>";
         }
-        content += "</li></ul>";
+        else {
+            content += "<li><a>" + i.title + "</a></li>";
+        }
     }
     content += "</ul>";
     return content;
@@ -27,4 +77,3 @@ navMenuList.onclick = function (ev) {
     var parentLi = el.parentNode;
     parentLi.classList.toggle('menu-open');
 };
-//# sourceMappingURL=main.js.map
