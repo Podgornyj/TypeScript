@@ -6,9 +6,7 @@
         "sourceMap": false,
         "noEmitOnError": true
     },
-    "include": [
-        "/HW/main.ts"
-    ],
+
     "exclude": [
         "node_modules"
     ]
